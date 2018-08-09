@@ -1,12 +1,34 @@
-﻿<Window x:Class="ClipCop.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClipCop"
+        xmlns:Controls="clr-namespace:Microsoft.Expression.Prototyping.Controls;assembly=Microsoft.Expression.Prototyping.Runtime" x:Name="ClipCop" x:Class="ClipCop.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+        Title="ClipCop" Height="350" Width="550" Background="#FF1B1919" ResizeMode="CanMinimize">
+    <Grid Margin="0,0,4,1">
+        <Label x:Name="label" Content="Clipboard monitoring: " HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FF0080FF" FontSize="20" Margin="166,11,0,0"/>
+        <Label x:Name="labelStatus" Content="Enabled" HorizontalAlignment="Left" Margin="367,11,0,0" VerticalAlignment="Top" Foreground="#FF0CE402" FontSize="20" Width="82"/>
+        <Button x:Name="buttonOnOff" Content="Stop monitoring" HorizontalAlignment="Left" Margin="10,18,0,0" VerticalAlignment="Top" Width="140" Click="buttonOnOff_Click" FontSize="16" Foreground="Red" Background="#FF474747" BorderBrush="#FF979797" ToolTip="Click to stop clipboard monitoring" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="1,1,1,4"/>
+        <Label x:Name="currentClipboardLabel" Content="Current clipborad" HorizontalAlignment="Left" Margin="5,71,0,0" VerticalAlignment="Top" Foreground="#FFC5CCE0" Padding="5,5,5,2"/>
+        <Label x:Name="oldClipboardLabel" Content="Old clipborad" HorizontalAlignment="Left" Margin="5,189,0,0" VerticalAlignment="Top" Foreground="#FFC5CCE0" Padding="5,5,5,2"/>
+        <TextBlock x:Name="clipboardContents" HorizontalAlignment="Left" Margin="10,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="85" Width="513" Background="Black" Foreground="#FFAEAEAE" ScrollViewer.CanContentScroll="True"/>
+        <TextBlock x:Name="oldClipboardContents" HorizontalAlignment="Left" Margin="10,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="85" Width="513" Background="Black" Foreground="#FFAEAEAE"/>
+        <Button x:Name="buttonHelp" Content="?" HorizontalAlignment="Center" Margin="497,17,10,267" VerticalAlignment="Center" Width="33" Background="{x:Null}" Foreground="#FF959595" FontSize="24" FontWeight="Bold" BorderThickness="1" Height="36" ToolTip="Help" Click="buttonHelp_Click"/>
+        <Canvas x:Name="helpScreen" HorizontalAlignment="Left" Height="317" Margin="0,3,0,0" VerticalAlignment="Top" Width="540" Background="Black" Visibility="Hidden">
+            <Button x:Name="closeHelpButton" Content="Back" Canvas.Left="10" Canvas.Top="10" Width="47" Background="Black" Foreground="#FF959595" Click="closeHelpButton_Click" FontSize="16"/>
+            <Button x:Name="githubButton" Content="Github" Canvas.Left="10" Canvas.Top="281" Width="42" Foreground="#FF20C73F" Background="{x:Null}" BorderBrush="{x:Null}" RenderTransformOrigin="2.035,0.55"/>
+            <Button x:Name="btcButton" Content="BTC" Canvas.Left="230" Canvas.Top="281" Width="25" Foreground="#FF1D48DC" Background="{x:Null}" BorderBrush="{x:Null}" Click="btcButton_Click"/>
+            <Button x:Name="ethButton" Content="ETH" Canvas.Left="259" Canvas.Top="281" Width="26" Foreground="#FF1D48DC" Background="{x:Null}" BorderBrush="{x:Null}" Click="ethButton_Click" RenderTransformOrigin="-0.474,0.55"/>
+            <Button x:Name="ltcButton" Content="LTC" Canvas.Left="285" Canvas.Top="281" Width="31" Foreground="#FF1D48DC" BorderBrush="{x:Null}" Background="{x:Null}" Click="ltcButton_Click" RenderTransformOrigin="0.682,-1.2"/>
+            <Button x:Name="dogeButton" Content="DOGE" Canvas.Left="316" Canvas.Top="281" Width="38" Foreground="#FF1D48DC" Background="{x:Null}" BorderBrush="{x:Null}" Click="dogeButton_Click"/>
+            <Label x:Name="label1" Content="Donate" Canvas.Left="180" Canvas.Top="278" Foreground="#FF869B03"/>
+            <Label x:Name="label2" Content="v1.0.0.0" Canvas.Left="487" Canvas.Top="280" Foreground="#FF959595" Background="{x:Null}" FontSize="10"/>
+            <ScrollViewer x:Name="helpScreenScroolViewer" Height="222" Canvas.Left="3" Canvas.Top="46" Width="527" Foreground="White" CanContentScroll="True">
+                <TextBlock x:Name="helpScreenTextBlock" TextWrapping="Wrap" MaxWidth="527" Width="486" FontSize="14" Foreground="#FF959595"><Run Text="ClipCop monitors the Windows clipboard and notifies you when the contents change, by flashing the taskbar icon. It flashes 10 times to get your attention, and then remains lit up until you click the ClipCop taskbar icon or application window. It also displays the text that is currently in the clipboard, as well as the most recent change."/><LineBreak/><Run/><LineBreak/><Run Text="ClipCop notifies you of all changes, but if the content in the clipboard is not text, but is an image/file/etc, it will say &quot;-- Non-text content --&quot;."/><LineBreak/><Run/><LineBreak/><Run Text="ClipCop was designed primarily to protect cryptocurrency wallet addresses from malicious software that replaces the address in the clipboard to make you send funds to the wrong address."/><LineBreak/><Run/><LineBreak/><Run Text="When you want to send a transaction, start ClipCop, then copy the cryptocurrency address. The ClipCop icon will start flashing. Click it to stop the flashing, and check that the current clipboard contents match what you copied. Now you have the address in the clipboard, and you can paste it wherever you need to. As long as the icon doesn't light up again, the clipboard has not been changed. You can check the ClipCop window at any time to see what's currently in the clipboard. If the icon becomes lit up but you didn't copy something, then you may have a virus, and you should take appropriate action to secure your PC and protect your crypto."/><LineBreak/><Run/><LineBreak/><Run Text="ClipCop is not responsible for any loss or damage of any kind, and is intended only as a helpful utility with no liability or guarantees."/><LineBreak/><Run/></TextBlock>
+            </ScrollViewer>
+        </Canvas>
+
     </Grid>
 </Window>
