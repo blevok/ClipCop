@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Media;
 using System.Windows;
 using System.Windows.Media;
 
@@ -10,6 +11,7 @@ namespace ClipCop
         public string oldClipboard;
         public bool clipboardUpdated = false;
         public bool monitoringEnabled = true;
+        public string soundOption = "1";
 
         // get the clipboard contents
         public string GetClipboard()
@@ -48,6 +50,41 @@ namespace ClipCop
             windowClipboardManager.ClipboardChanged += ClipboardChanged;
         }
 
+        // set audio option
+        private void sound1_Click(object sender, RoutedEventArgs e)
+        {
+            soundOption = "1";
+            sound1.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFFFF"));
+            sound2.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF707070"));
+            soundOff.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF707070"));
+            sound1.FontWeight = FontWeights.Bold;
+            sound2.FontWeight = FontWeights.Normal;
+            soundOff.FontWeight = FontWeights.Normal;
+        }
+
+        private void sound2_Click(object sender, RoutedEventArgs e)
+        {
+            soundOption = "2";
+            sound1.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF707070"));
+            sound2.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFFFF"));
+            soundOff.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF707070"));
+            sound1.FontWeight = FontWeights.Normal;
+            sound2.FontWeight = FontWeights.Bold;
+            soundOff.FontWeight = FontWeights.Normal;
+        }
+
+        private void soundOff_Click(object sender, RoutedEventArgs e)
+        {
+            soundOption = "Off";
+            sound1.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF707070"));
+            sound2.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF707070"));
+            soundOff.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFFFF"));
+            sound1.FontWeight = FontWeights.Normal;
+            sound2.FontWeight = FontWeights.Normal;
+            soundOff.FontWeight = FontWeights.Bold;
+        }
+
+
         private void ClipboardChanged(object sender, EventArgs e)
         {
             if (monitoringEnabled == true)
@@ -69,7 +106,20 @@ namespace ClipCop
                     var flasher = new FlashWindowHelper(Application.Current);
                     flasher.FlashApplicationWindow();
                 }
+
+                // play sound
+                if (soundOption == "1")
+                {
+                    SystemSounds.Beep.Play();
+                } else if (soundOption == "2")
+                {
+                    SystemSounds.Hand.Play();
+                } else
+                {
+
+                }
             }
+            
         }
 
         // start/stop monitoring button
