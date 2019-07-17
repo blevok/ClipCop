@@ -19,7 +19,7 @@ namespace ClipCop
         public void FlashApplicationWindow()
         {
             InitializeHandle();
-            Flash(this.mainWindowHWnd, 10);
+            Flash(this.mainWindowHWnd, 25);
         }
 
         public void StopFlashing()

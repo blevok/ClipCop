@@ -119,7 +119,6 @@ namespace ClipCop
 
                 }
             }
-            
         }
 
         // start/stop monitoring button
@@ -182,33 +181,36 @@ namespace ClipCop
         }
 
         // donate buttons
-        // for some reason, copying from within the application screws up the old clipboard, so for now i'm just resetting after clicking a donate button
         private void btcButton_Click(object sender, RoutedEventArgs e)
         {
+            string oc = clipboardContents.Text.ToString();
             Clipboard.SetText("1DQLbaxohsnXy575Y3uhabimkny2Vw3UrX");
             MessageBox.Show("Copied BTC address\n1DQLbaxohsnXy575Y3uhabimkny2Vw3UrX");
-            oldClipboardContents.Text = "";
+            oldClipboardContents.Text = oc;
         }
 
         private void ethButton_Click(object sender, RoutedEventArgs e)
         {
+            string oc = clipboardContents.Text.ToString();
             Clipboard.SetText("0xb6aC512DeEAd27F607C80a6A249B7d5941A5a1eF");
             MessageBox.Show("Copied ETH address\n0xb6aC512DeEAd27F607C80a6A249B7d5941A5a1eF");
-            oldClipboardContents.Text = "";
+            oldClipboardContents.Text = oc;
         }
 
         private void ltcButton_Click(object sender, RoutedEventArgs e)
         {
+            string oc = clipboardContents.Text.ToString();
             Clipboard.SetText("LYHLd1FzNZVy4kcNQdyGCGaVpgtMpho8yk");
             MessageBox.Show("Copied LTC address\nLYHLd1FzNZVy4kcNQdyGCGaVpgtMpho8yk");
-            oldClipboardContents.Text = "";
+            oldClipboardContents.Text = oc;
         }
 
         private void dogeButton_Click(object sender, RoutedEventArgs e)
         {
+            string oc = clipboardContents.Text.ToString();
             Clipboard.SetText("DP69FaUzG8NBmnUNRoP7SU2mqsus3ELqgZ");
             MessageBox.Show("Copied DOGE address\nDP69FaUzG8NBmnUNRoP7SU2mqsus3ELqgZ");
-            oldClipboardContents.Text = "";
+            oldClipboardContents.Text = oc;
         }
     }
 }
