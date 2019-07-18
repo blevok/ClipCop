@@ -42,7 +42,11 @@ Stream Helper is released under the GNU GPLv3.0 license.
 ### Donate :
 
 If you find this program useful or it helped to actually protect your crypto from theft, consider making a small donation.
+
 BTC: 1DQLbaxohsnXy575Y3uhabimkny2Vw3UrX
+
 ETH: 0xb6aC512DeEAd27F607C80a6A249B7d5941A5a1eF
+
 LTC: LYHLd1FzNZVy4kcNQdyGCGaVpgtMpho8yk
+
 DOGE: DP69FaUzG8NBmnUNRoP7SU2mqsus3ELqgZ
