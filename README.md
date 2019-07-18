@@ -21,7 +21,7 @@ You can check the ClipCop window at any time to see what's currently in the clip
 
 ![Monitoring disabled](https://raw.githubusercontent.com/blevok/ClipCop/master/ClipCop/cc-off.png)
 
-*Taskbar:**
+**Taskbar:**
 
 ![Taskbar](https://raw.githubusercontent.com/blevok/ClipCop/master/ClipCop/cc-taskbar.png)
 
