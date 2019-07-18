@@ -11,6 +11,14 @@ You can check the ClipCop window at any time to see what's currently in the clip
 
 ------------------------------
 
+### Download :
+
+You can download the pre-compiled program here:
+
+https://github.com/blevok/ClipCop/releases/download/1.0.0.0/ClipCop.exe
+
+------------------------------
+
 ### Screenshots : 
 
 **Monitoring enabled:**
