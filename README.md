@@ -43,7 +43,7 @@ ClipCop and/or the developer is not responsible for any loss or damage of any ki
 
 ### License :
 
-Stream Helper is released under the GNU GPLv3.0 license.
+ClipCop is released under the GNU GPLv3.0 license.
 
 ------------------------------
 
