@@ -11,7 +11,8 @@ namespace ClipCop
         public string oldClipboard;
         public bool clipboardUpdated = false;
         public bool monitoringEnabled = true;
-        public string soundOption = "1";
+        public int soundOption = Properties.Settings.Default.soundOption;
+        public int popupOption = Properties.Settings.Default.popupOption;
 
         // get the clipboard contents
         public string GetClipboard()
@@ -41,6 +42,57 @@ namespace ClipCop
             }
             clipboardContents.Text = currentClipboard;
             oldClipboard = currentClipboard;
+
+            SetSoundOption();
+            SetPopupOption();
+        }
+
+        // set sound option from settings
+        private void SetSoundOption()
+        {
+            if (soundOption == 1)
+            {
+                sound1.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFFFF"));
+                sound2.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF707070"));
+                soundOff.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF707070"));
+                sound1.FontWeight = FontWeights.Bold;
+                sound2.FontWeight = FontWeights.Normal;
+                soundOff.FontWeight = FontWeights.Normal;
+            } else if (soundOption == 2)
+            {
+                sound1.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF707070"));
+                sound2.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFFFF"));
+                soundOff.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF707070"));
+                sound1.FontWeight = FontWeights.Normal;
+                sound2.FontWeight = FontWeights.Bold;
+                soundOff.FontWeight = FontWeights.Normal;
+            } else if (soundOption == 0)
+            {
+                sound1.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF707070"));
+                sound2.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF707070"));
+                soundOff.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFFFF"));
+                sound1.FontWeight = FontWeights.Normal;
+                sound2.FontWeight = FontWeights.Normal;
+                soundOff.FontWeight = FontWeights.Bold;
+            }
+        }
+
+        // set popup option from settings
+        private void SetPopupOption()
+        {
+            if (popupOption == 1)
+            {
+                popupOn.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFFFF"));
+                popupOff.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF707070"));
+                popupOn.FontWeight = FontWeights.Bold;
+                popupOff.FontWeight = FontWeights.Normal;
+            } else if (popupOption == 0)
+            {
+                popupOff.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFFFF"));
+                popupOn.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF707070"));
+                popupOff.FontWeight = FontWeights.Bold;
+                popupOn.FontWeight = FontWeights.Normal;
+            }
         }
 
         protected override void OnSourceInitialized(EventArgs e)
@@ -53,38 +105,67 @@ namespace ClipCop
         // set audio option
         private void sound1_Click(object sender, RoutedEventArgs e)
         {
-            soundOption = "1";
+            soundOption = 1;
             sound1.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFFFF"));
             sound2.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF707070"));
             soundOff.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF707070"));
             sound1.FontWeight = FontWeights.Bold;
             sound2.FontWeight = FontWeights.Normal;
             soundOff.FontWeight = FontWeights.Normal;
+            Properties.Settings.Default.soundOption = soundOption;
+            Properties.Settings.Default.Save();
         }
 
         private void sound2_Click(object sender, RoutedEventArgs e)
         {
-            soundOption = "2";
+            soundOption = 2;
             sound1.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF707070"));
             sound2.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFFFF"));
             soundOff.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF707070"));
             sound1.FontWeight = FontWeights.Normal;
             sound2.FontWeight = FontWeights.Bold;
             soundOff.FontWeight = FontWeights.Normal;
+            Properties.Settings.Default.soundOption = soundOption;
+            Properties.Settings.Default.Save();
         }
 
         private void soundOff_Click(object sender, RoutedEventArgs e)
         {
-            soundOption = "Off";
+            soundOption = 0;
             sound1.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF707070"));
             sound2.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF707070"));
             soundOff.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFFFF"));
             sound1.FontWeight = FontWeights.Normal;
             sound2.FontWeight = FontWeights.Normal;
             soundOff.FontWeight = FontWeights.Bold;
+            Properties.Settings.Default.soundOption = soundOption;
+            Properties.Settings.Default.Save();
         }
 
+        // set popup option
+        private void popupOn_Click(object sender, RoutedEventArgs e)
+        {
+            popupOption = 1;
+            popupOn.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFFFF"));
+            popupOff.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF707070"));
+            popupOn.FontWeight = FontWeights.Bold;
+            popupOff.FontWeight = FontWeights.Normal;
+            Properties.Settings.Default.popupOption = popupOption;
+            Properties.Settings.Default.Save();
+        }
 
+        private void popupOff_Click(object sender, RoutedEventArgs e)
+        {
+            popupOption = 0;
+            popupOff.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFFFF"));
+            popupOn.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF707070"));
+            popupOff.FontWeight = FontWeights.Bold;
+            popupOn.FontWeight = FontWeights.Normal;
+            Properties.Settings.Default.popupOption = popupOption;
+            Properties.Settings.Default.Save();
+        }
+
+        // do this stuff when the clipboard changes
         private void ClipboardChanged(object sender, EventArgs e)
         {
             if (monitoringEnabled == true)
@@ -108,16 +189,26 @@ namespace ClipCop
                 }
 
                 // play sound
-                if (soundOption == "1")
+                if (soundOption == 1)
                 {
                     SystemSounds.Beep.Play();
-                } else if (soundOption == "2")
+                } else if (soundOption == 2)
                 {
                     SystemSounds.Hand.Play();
                 } else
                 {
 
                 }
+
+                // show popup
+                if (popupOption == 1)
+                {
+                    MessageBox.Show("Clipboard has changed!\n\n" + "Please check the \"Current clipboard\" section of the ClipCop window to verify the clipboard contents.", "ClipCop Notification", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                } else
+                {
+
+                }
+
             }
         }
 
