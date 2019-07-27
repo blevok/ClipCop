@@ -4,7 +4,7 @@ ClipCop is a WPF desktop app written in C# that monitors the Windows clipboard a
 
 ClipCop notifies you of all changes, but if the content in the clipboard is not text, and instead is an image/file/etc, it will say "-- Non-text content --".
 
-Notification preferences are automatically saved between sessions in C:\Users\\<user>\AppData\Local\ClipCop.
+Notification preferences are automatically saved between sessions in \AppData\Local\ClipCop.
 
 ClipCop was designed primarily to protect cryptocurrency wallet addresses from malicious software that replaces the address in the clipboard to make you send funds to the wrong address.
 When you want to send a transaction, start ClipCop, then copy the cryptocurrency address. ClipCop will make a sound and/or show a popup (depending on your settings), and the icon will start flashing. Click the taskbar icon or ClipCop window to stop the flashing, and check that the current clipboard contents match what you copied. Now you have the address in the clipboard, and you can paste it wherever you need to. As long as the icon doesn't light up again, the clipboard has not been changed.
